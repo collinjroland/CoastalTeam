@@ -15,10 +15,6 @@ from landlab.grid.mappers import map_max_of_link_nodes_to_link
 def totalsedimenterosion_mudsine(roughness, grid, tau_cr, tau_crv, mud_erodability):
 
     
-#get rid of xi
-taucr = grid.add_zeros('tau_cr',at='cell') + tau_cr
-taucr[veg_atcell==1] = tau_crv
-
 #xi = -lev_atlink-tidal_rangev/2
 #xi[xi<0] = 0
 #taucr += xi*tcrgradeint
