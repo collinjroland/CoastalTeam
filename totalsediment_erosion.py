@@ -20,19 +20,19 @@ def totalsedimenterosion_mudsine(roughness, grid, taucr, mud_erodability):
 #taucr += xi*tcrgradeint
 
 
-fupeak = np.pi/2
-#total sed erosion for loop
-ntdcy = 10 #number of tidal cycles
-E = grid.add_zeros('Erosion',at = 'cell')
-print(mud_erodability)
-print(" ")
-
-# get rid of for loop
-#for i in range(ntdcy):
-utide = grid.at_cell['flood_tide_flow__velocity']*fupeak*np.sin(np.pi/2) #intra-tidal velocity
-tauC = 1025*9.81*roughness**2 * utide**2 * grid._water_depth_at_cells**(-1/3)
-E += mud_erodability*(np.sqrt(1+(tauC/taucr)**2)-1)
-print(max(E))
-
-print(grid.at_cell.keys())    
-#print(np.maximum(E))
+    fupeak = np.pi/2
+    #total sed erosion for loop
+    ntdcy = 10 #number of tidal cycles
+    E = grid.add_zeros('Erosion',at = 'cell')
+    print(mud_erodability)
+    print(" ")
+    
+    # get rid of for loop
+    #for i in range(ntdcy):
+    utide = grid.at_cell['flood_tide_flow__velocity']*fupeak*np.sin(np.pi/2) #intra-tidal velocity
+    tauC = 1025*9.81*roughness**2 * utide**2 * grid._water_depth_at_cells**(-1/3)
+    E += mud_erodability*(np.sqrt(1+(tauC/taucr)**2)-1)
+    print(max(E))
+    
+    print(grid.at_cell.keys())    
+    #print(np.maximum(E))
