@@ -12,7 +12,7 @@ from landlab.io import read_esri_ascii
 from landlab.grid.mappers import map_max_of_link_nodes_to_link
 
 
-def totalsedimenterosion_mudsine(roughness, grid, tau_cr, tau_crv, mud_erodability):
+def totalsedimenterosion_mudsine(roughness, grid, taucr, mud_erodability):
 
     
 #xi = -lev_atlink-tidal_rangev/2
@@ -31,7 +31,7 @@ print(" ")
 #for i in range(ntdcy):
 utide = grid.at_cell['flood_tide_flow__velocity']*fupeak*np.sin(np.pi/2) #intra-tidal velocity
 tauC = 1025*9.81*roughness**2 * utide**2 * grid._water_depth_at_cells**(-1/3)
-E += mud_erodability*(np.sqrt(1+(tauc/taucr)**2)-1)
+E += mud_erodability*(np.sqrt(1+(tauC/taucr)**2)-1)
 print(max(E))
 
 print(grid.at_cell.keys())    
