@@ -95,7 +95,7 @@ def sedtran(d, A, DiffS, h, ho, E, WS, dx, dt, rbulk, co, Ux, Uy, FLX, fTide, Tt
     
     # the factor 24*3600 is used to convert the Ux and Uy from m/s to m/day
     
-    [row, col] = np.unravel_index(p, size(A))
+    [col, row] = np.unravel_index(p, np.shape(A))
     for k in [N -1 1 -N]:
         [a, q] = exludeboundarycell(k, N, M, p)
         
